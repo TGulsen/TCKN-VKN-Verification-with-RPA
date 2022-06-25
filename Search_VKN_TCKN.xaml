@@ -1,0 +1,1242 @@
+<Activity mc:Ignorable="sap sap2010" x:Class="VKN_TCKN_BilgileriGetir" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:mva="clr-namespace:Microsoft.VisualBasic.Activities;assembly=System.Activities" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=mscorlib" xmlns:sd="clr-namespace:System.Data;assembly=System.Data" xmlns:sxl="clr-namespace:System.Xml.Linq;assembly=System.Xml.Linq" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+  <x:Members>
+    <x:Property Name="in_Transaction_Row" Type="InOutArgument(sd:DataRow)" />
+    <x:Property sap2010:Annotation.AnnotationText="Dictionary structure to store configuration data of the process (settings, constants and assets)." Name="in_Config" Type="InArgument(scg:Dictionary(x:String, x:Object))" />
+  </x:Members>
+  <mva:VisualBasic.Settings>
+    <x:Null />
+  </mva:VisualBasic.Settings>
+  <sap:VirtualizedContainerService.HintSize>806,2321</sap:VirtualizedContainerService.HintSize>
+  <sap2010:WorkflowViewState.IdRef>VKN_TCKN_BilgileriGetir_1</sap2010:WorkflowViewState.IdRef>
+  <TextExpression.NamespacesForImplementation>
+    <scg:List x:TypeArguments="x:String" Capacity="29">
+      <x:String>System.Activities</x:String>
+      <x:String>System.Activities.Statements</x:String>
+      <x:String>System.Activities.Expressions</x:String>
+      <x:String>System.Activities.Validation</x:String>
+      <x:String>System.Activities.XamlIntegration</x:String>
+      <x:String>Microsoft.VisualBasic</x:String>
+      <x:String>Microsoft.VisualBasic.Activities</x:String>
+      <x:String>System</x:String>
+      <x:String>System.Collections</x:String>
+      <x:String>System.Collections.Generic</x:String>
+      <x:String>System.Data</x:String>
+      <x:String>System.Diagnostics</x:String>
+      <x:String>System.Drawing</x:String>
+      <x:String>System.IO</x:String>
+      <x:String>System.Linq</x:String>
+      <x:String>System.Net.Mail</x:String>
+      <x:String>System.Xml</x:String>
+      <x:String>System.Xml.Linq</x:String>
+      <x:String>UiPath.Core</x:String>
+      <x:String>UiPath.Core.Activities</x:String>
+      <x:String>System.Windows.Markup</x:String>
+      <x:String>System.Collections.ObjectModel</x:String>
+      <x:String>System.Activities.DynamicUpdate</x:String>
+      <x:String>System.Reflection</x:String>
+      <x:String>System.Runtime.InteropServices</x:String>
+      <x:String>System.Xml.Serialization</x:String>
+      <x:String>System.ComponentModel</x:String>
+      <x:String>System.Runtime.Serialization</x:String>
+      <x:String>UiPath.UIAutomationNext.Enums</x:String>
+    </scg:List>
+  </TextExpression.NamespacesForImplementation>
+  <TextExpression.ReferencesForImplementation>
+    <scg:List x:TypeArguments="AssemblyReference" Capacity="28">
+      <AssemblyReference>System.Activities</AssemblyReference>
+      <AssemblyReference>Microsoft.VisualBasic</AssemblyReference>
+      <AssemblyReference>mscorlib</AssemblyReference>
+      <AssemblyReference>System.Data</AssemblyReference>
+      <AssemblyReference>System.Data.DataSetExtensions</AssemblyReference>
+      <AssemblyReference>System</AssemblyReference>
+      <AssemblyReference>System.Drawing</AssemblyReference>
+      <AssemblyReference>System.Core</AssemblyReference>
+      <AssemblyReference>System.Xml</AssemblyReference>
+      <AssemblyReference>System.Xml.Linq</AssemblyReference>
+      <AssemblyReference>PresentationFramework</AssemblyReference>
+      <AssemblyReference>WindowsBase</AssemblyReference>
+      <AssemblyReference>PresentationCore</AssemblyReference>
+      <AssemblyReference>System.Xaml</AssemblyReference>
+      <AssemblyReference>UiPath.System.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.UiAutomation.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.UIAutomationNext</AssemblyReference>
+      <AssemblyReference>UiPath.System.Activities.Design</AssemblyReference>
+      <AssemblyReference>System.ServiceModel</AssemblyReference>
+      <AssemblyReference>Microsoft.Bcl.AsyncInterfaces</AssemblyReference>
+      <AssemblyReference>System.ValueTuple</AssemblyReference>
+      <AssemblyReference>System.ComponentModel.Composition</AssemblyReference>
+      <AssemblyReference>UiPath.Excel</AssemblyReference>
+      <AssemblyReference>System.Memory</AssemblyReference>
+      <AssemblyReference>UiPath.OCR.Activities.Design</AssemblyReference>
+      <AssemblyReference>UiPath.UIAutomationCore</AssemblyReference>
+      <AssemblyReference>UiPath.Mail</AssemblyReference>
+    </scg:List>
+  </TextExpression.ReferencesForImplementation>
+  <Sequence DisplayName="Search_VKN_TCKN" sap:VirtualizedContainerService.HintSize="644,2156" sap2010:WorkflowViewState.IdRef="Sequence_1">
+    <sap:WorkflowViewStateService.ViewState>
+      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+      </scg:Dictionary>
+    </sap:WorkflowViewStateService.ViewState>
+    <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="602,91" sap2010:WorkflowViewState.IdRef="LogMessage_56" Level="Info" Message="[&quot;State : -&gt; Search VKN TCKN workflow başladı.&quot;]" />
+    <Sequence sap2010:Annotation.AnnotationText="Verilen numaranın TCKN, VKN kararı verilir.&#xA;" DisplayName="VKN_TCKN_Decided" sap:VirtualizedContainerService.HintSize="602,1802" sap2010:WorkflowViewState.IdRef="Sequence_4">
+      <Sequence.Variables>
+        <Variable x:TypeArguments="x:Object" Name="VKN_TCKN" />
+      </Sequence.Variables>
+      <sap:WorkflowViewStateService.ViewState>
+        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+          <x:Boolean x:Key="IsPinned">False</x:Boolean>
+          <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+        </scg:Dictionary>
+      </sap:WorkflowViewStateService.ViewState>
+      <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="560,91" sap2010:WorkflowViewState.IdRef="LogMessage_1" Level="Info" Message="[&quot;VKN-TCKN değerinin kararının verildiği süreç başladı.&quot;]" />
+      <Assign sap:VirtualizedContainerService.HintSize="560,60" sap2010:WorkflowViewState.IdRef="Assign_5">
+        <Assign.To>
+          <OutArgument x:TypeArguments="x:Object">[VKN_TCKN]</OutArgument>
+        </Assign.To>
+        <Assign.Value>
+          <InArgument x:TypeArguments="x:Object">[in_Transaction_Row.Item("VergiKimlikNo")]</InArgument>
+        </Assign.Value>
+      </Assign>
+      <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="560,91" sap2010:WorkflowViewState.IdRef="LogMessage_2" Level="Info" Message="[&quot;Data tableden ilgili değer alındı.&quot;]" />
+      <ui:BrowserScope Browser="{x:Null}" SearchScope="{x:Null}" TimeoutMS="{x:Null}" UiBrowser="{x:Null}" BrowserType="Chrome" DisplayName="Attach Browser : 'İnteraktif Vergi Dairesi'" sap:VirtualizedContainerService.HintSize="560,1306" sap2010:WorkflowViewState.IdRef="BrowserScope_1" InformativeScreenshot="a0fbe3cb398b2c7c2498a543aded9838" Selector="&lt;html app='chrome.exe' title='İnteraktif Vergi Dairesi' /&gt;">
+        <ui:BrowserScope.Body>
+          <ActivityAction x:TypeArguments="x:Object">
+            <ActivityAction.Argument>
+              <DelegateInArgument x:TypeArguments="x:Object" Name="ContextTarget" />
+            </ActivityAction.Argument>
+            <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="526,1160" sap2010:WorkflowViewState.IdRef="Sequence_65">
+              <sap:WorkflowViewStateService.ViewState>
+                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                  <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                </scg:Dictionary>
+              </sap:WorkflowViewStateService.ViewState>
+              <If Condition="[VKN_TCKN.ToString.Trim.Length =11]" sap:VirtualizedContainerService.HintSize="484,223" sap2010:WorkflowViewState.IdRef="If_2">
+                <sap:WorkflowViewStateService.ViewState>
+                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                    <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                    <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                  </scg:Dictionary>
+                </sap:WorkflowViewStateService.ViewState>
+                <If.Then>
+                  <Sequence DisplayName="TCKN_İslemleri" sap:VirtualizedContainerService.HintSize="200,66" sap2010:WorkflowViewState.IdRef="Sequence_5">
+                    <Sequence.Variables>
+                      <Variable x:TypeArguments="x:String" Name="SecilecekIlce" />
+                      <Variable x:TypeArguments="x:String" Name="SecilecekIL" />
+                      <Variable x:TypeArguments="x:String" Name="InputTCKNSelector" />
+                    </Sequence.Variables>
+                    <sap:WorkflowViewStateService.ViewState>
+                      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                        <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                        <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                      </scg:Dictionary>
+                    </sap:WorkflowViewStateService.ViewState>
+                    <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="334,91" sap2010:WorkflowViewState.IdRef="LogMessage_3" Level="Info" Message="[&quot;İlgili değer TCKN'na aittir.&quot;]" />
+                    <Assign sap:VirtualizedContainerService.HintSize="334,60" sap2010:WorkflowViewState.IdRef="Assign_6">
+                      <Assign.To>
+                        <OutArgument x:TypeArguments="x:String">[InputTCKNSelector]</OutArgument>
+                      </Assign.To>
+                      <Assign.Value>
+                        <InArgument x:TypeArguments="x:String">[in_Config("InputTCKNSelector").ToString]</InArgument>
+                      </Assign.Value>
+                    </Assign>
+                    <ui:TypeInto AlterIfDisabled="{x:Null}" DelayBefore="{x:Null}" DelayBetweenKeys="{x:Null}" DelayMS="{x:Null}" SendWindowMessages="{x:Null}" SimulateType="{x:Null}" Activate="True" sap2010:Annotation.AnnotationText="&#xA;" ClickBeforeTyping="True" DisplayName="Type Into 'INPUT  TCKN'" EmptyField="True" sap:VirtualizedContainerService.HintSize="334,176" sap2010:WorkflowViewState.IdRef="TypeInto_1" Text="[VKN_TCKN.ToString]">
+                      <ui:TypeInto.Target>
+                        <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="a878c252-fe18-430d-a756-7f52d114b50e" InformativeScreenshot="c52cc171dcdd46339952703cdca9b5ad" Selector="[InputTCKNSelector]">
+                          <ui:Target.TimeoutMS>
+                            <InArgument x:TypeArguments="x:Int32" />
+                          </ui:Target.TimeoutMS>
+                          <ui:Target.WaitForReady>
+                            <InArgument x:TypeArguments="ui:WaitForReady" />
+                          </ui:Target.WaitForReady>
+                        </ui:Target>
+                      </ui:TypeInto.Target>
+                      <sap:WorkflowViewStateService.ViewState>
+                        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                          <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+                        </scg:Dictionary>
+                      </sap:WorkflowViewStateService.ViewState>
+                    </ui:TypeInto>
+                    <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="334,91" sap2010:WorkflowViewState.IdRef="LogMessage_4" Level="Info" Message="[&quot;TCKN değeri TCKN arama kısmına yazıldı.&quot;]" />
+                  </Sequence>
+                </If.Then>
+                <If.Else>
+                  <Sequence DisplayName="VKN_İslemleri" sap:VirtualizedContainerService.HintSize="200,66" sap2010:WorkflowViewState.IdRef="Sequence_7">
+                    <sap:WorkflowViewStateService.ViewState>
+                      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                        <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                        <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                      </scg:Dictionary>
+                    </sap:WorkflowViewStateService.ViewState>
+                    <If Condition="[VKN_TCKN.ToString.Trim.Length =10]" sap:VirtualizedContainerService.HintSize="484,223" sap2010:WorkflowViewState.IdRef="If_1">
+                      <sap:WorkflowViewStateService.ViewState>
+                        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                          <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                        </scg:Dictionary>
+                      </sap:WorkflowViewStateService.ViewState>
+                      <If.Then>
+                        <Sequence DisplayName="VKN yazılması:" sap:VirtualizedContainerService.HintSize="200,66" sap2010:WorkflowViewState.IdRef="Sequence_6">
+                          <Sequence.Variables>
+                            <Variable x:TypeArguments="x:String" Name="InputVKNSelector" />
+                          </Sequence.Variables>
+                          <sap:WorkflowViewStateService.ViewState>
+                            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                              <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                              <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                            </scg:Dictionary>
+                          </sap:WorkflowViewStateService.ViewState>
+                          <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="334,91" sap2010:WorkflowViewState.IdRef="LogMessage_5" Level="Info" Message="[&quot;Değer VKN'na aittir.&quot;]" />
+                          <Assign sap:VirtualizedContainerService.HintSize="334,60" sap2010:WorkflowViewState.IdRef="Assign_31">
+                            <Assign.To>
+                              <OutArgument x:TypeArguments="x:String">[InputVKNSelector]</OutArgument>
+                            </Assign.To>
+                            <Assign.Value>
+                              <InArgument x:TypeArguments="x:String">[in_Config("InputVKNSelector").ToString]</InArgument>
+                            </Assign.Value>
+                          </Assign>
+                          <ui:TypeInto AlterIfDisabled="{x:Null}" DelayBefore="{x:Null}" DelayBetweenKeys="{x:Null}" DelayMS="{x:Null}" SendWindowMessages="{x:Null}" SimulateType="{x:Null}" Activate="True" sap2010:Annotation.AnnotationText="&#xA;" ClickBeforeTyping="True" DisplayName="Type Into 'INPUT  VKN'" EmptyField="True" sap:VirtualizedContainerService.HintSize="334,176" sap2010:WorkflowViewState.IdRef="TypeInto_2" Text="[VKN_TCKN.ToString]">
+                            <ui:TypeInto.Target>
+                              <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="a878c252-fe18-430d-a756-7f52d114b50e" InformativeScreenshot="018d678954e147e2f7a0f376bf0e323e" Selector="[InputVKNSelector]" WaitForReady="COMPLETE">
+                                <ui:Target.TimeoutMS>
+                                  <InArgument x:TypeArguments="x:Int32" />
+                                </ui:Target.TimeoutMS>
+                              </ui:Target>
+                            </ui:TypeInto.Target>
+                            <sap:WorkflowViewStateService.ViewState>
+                              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+                              </scg:Dictionary>
+                            </sap:WorkflowViewStateService.ViewState>
+                          </ui:TypeInto>
+                          <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="334,91" sap2010:WorkflowViewState.IdRef="LogMessage_6" Level="Info" Message="[&quot;VKN değeri, VKN arama kısmına yazıldı.&quot;]" />
+                        </Sequence>
+                      </If.Then>
+                      <If.Else>
+                        <Throw Exception="[new Exception(&quot;Verilen numara sorgu için kullanılamaz. &quot;)]" sap:VirtualizedContainerService.HintSize="200,22" sap2010:WorkflowViewState.IdRef="Throw_11" />
+                      </If.Else>
+                    </If>
+                  </Sequence>
+                </If.Else>
+              </If>
+              <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="484,91" sap2010:WorkflowViewState.IdRef="LogMessage_58" Level="Info" Message="[&quot;VKN-TCKN değerinin kararının verildiği süreç sonlandı.&quot;]" />
+              <Sequence sap2010:Annotation.AnnotationText="Elimizdeki  verilerle Vergi dairesi arama işlemlerini içerir.&#xA;" DisplayName="Search Operations" sap:VirtualizedContainerService.HintSize="484,674" sap2010:WorkflowViewState.IdRef="Sequence_59">
+                <Sequence.Variables>
+                  <Variable x:TypeArguments="x:String" Name="StringOfCity" />
+                  <Variable x:TypeArguments="x:String" Name="SecilecekIL" />
+                  <Variable x:TypeArguments="x:Int32" Name="IndexOfCity" />
+                  <Variable x:TypeArguments="x:String" Name="SecilecekVergiDairesi" />
+                  <Variable x:TypeArguments="x:Boolean" Name="IsDoğrulaButtonExist" />
+                  <Variable x:TypeArguments="x:Boolean" Name="SelectVergiDairesi" />
+                  <Variable x:TypeArguments="x:String" Name="htmlText" />
+                  <Variable x:TypeArguments="sxl:XElement" Name="Xelement_text" />
+                  <Variable x:TypeArguments="scg:List(x:String)" Name="ListOfILce" />
+                  <Variable x:TypeArguments="scg:List(x:String)" Name="FilteredOfILceList" />
+                  <Variable x:TypeArguments="sd:DataTable" Name="ExtractDataTable1" />
+                  <Variable x:TypeArguments="x:Boolean" Name="IsDoğrulamaEkranıExist" />
+                  <Variable x:TypeArguments="x:Boolean" Name="IsHataImageExist" />
+                  <Variable x:TypeArguments="x:String" Name="Wrongİlçe" />
+                  <Variable x:TypeArguments="x:Int32" Name="sayac" />
+                  <Variable x:TypeArguments="x:String" Name="SecilecekILSelector" />
+                  <Variable x:TypeArguments="x:String" Name="SecilecekILceSelector" />
+                  <Variable x:TypeArguments="x:String" Name="ButtonOfDogrulaSelector" />
+                  <Variable x:TypeArguments="x:String" Name="DogrulamaEkranıSelector" />
+                  <Variable x:TypeArguments="x:String" Name="ButtonOfTamamSelector" />
+                  <Variable x:TypeArguments="x:Boolean" Name="IsHataMesajıExist" />
+                  <Variable x:TypeArguments="x:Boolean" Name="IsTamamExist" />
+                </Sequence.Variables>
+                <sap:WorkflowViewStateService.ViewState>
+                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                    <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                    <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                    <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+                  </scg:Dictionary>
+                </sap:WorkflowViewStateService.ViewState>
+                <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="334,91" sap2010:WorkflowViewState.IdRef="LogMessage_59" Level="Info" Message="[&quot;Vergi dairesinin arandığı süreç başlatılıyor.&quot;]" />
+                <Sequence DisplayName="Inıt Sequence" sap:VirtualizedContainerService.HintSize="334,66" sap2010:WorkflowViewState.IdRef="Sequence_70">
+                  <sap:WorkflowViewStateService.ViewState>
+                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                      <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                      <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                    </scg:Dictionary>
+                  </sap:WorkflowViewStateService.ViewState>
+                  <Assign sap:VirtualizedContainerService.HintSize="334,60" sap2010:WorkflowViewState.IdRef="Assign_15">
+                    <Assign.To>
+                      <OutArgument x:TypeArguments="x:String">[SecilecekIL]</OutArgument>
+                    </Assign.To>
+                    <Assign.Value>
+                      <InArgument x:TypeArguments="x:String">[in_Transaction_Row.Item("Il").ToString().ToUpper()]</InArgument>
+                    </Assign.Value>
+                  </Assign>
+                  <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="334,91" sap2010:WorkflowViewState.IdRef="LogMessage_30" Level="Info" Message="[&quot;DataTable'dan secilecek il alındı.&quot;]" />
+                  <Assign sap:VirtualizedContainerService.HintSize="334,60" sap2010:WorkflowViewState.IdRef="Assign_16">
+                    <Assign.To>
+                      <OutArgument x:TypeArguments="x:String">[SecilecekVergiDairesi]</OutArgument>
+                    </Assign.To>
+                    <Assign.Value>
+                      <InArgument x:TypeArguments="x:String">[in_Transaction_Row.Item("Ilce").ToString]</InArgument>
+                    </Assign.Value>
+                  </Assign>
+                  <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="334,91" sap2010:WorkflowViewState.IdRef="LogMessage_31" Level="Info" Message="[&quot;DataTable'dan secilecek ilce alındı.&quot;]" />
+                  <Assign sap:VirtualizedContainerService.HintSize="334,60" sap2010:WorkflowViewState.IdRef="Assign_21">
+                    <Assign.To>
+                      <OutArgument x:TypeArguments="x:String">[SecilecekILSelector]</OutArgument>
+                    </Assign.To>
+                    <Assign.Value>
+                      <InArgument x:TypeArguments="x:String">[in_Config("SecilecekILSelector").ToString]</InArgument>
+                    </Assign.Value>
+                  </Assign>
+                  <Assign sap:VirtualizedContainerService.HintSize="334,60" sap2010:WorkflowViewState.IdRef="Assign_23">
+                    <Assign.To>
+                      <OutArgument x:TypeArguments="x:String">[SecilecekILceSelector]</OutArgument>
+                    </Assign.To>
+                    <Assign.Value>
+                      <InArgument x:TypeArguments="x:String">[in_Config("SecilecekILceSelector").ToString]</InArgument>
+                    </Assign.Value>
+                  </Assign>
+                  <Assign sap:VirtualizedContainerService.HintSize="334,60" sap2010:WorkflowViewState.IdRef="Assign_33">
+                    <Assign.To>
+                      <OutArgument x:TypeArguments="x:String">[ButtonOfDogrulaSelector]</OutArgument>
+                    </Assign.To>
+                    <Assign.Value>
+                      <InArgument x:TypeArguments="x:String">[in_Config("ButtonOfDogrulaSelector").ToString]</InArgument>
+                    </Assign.Value>
+                  </Assign>
+                  <Assign sap:VirtualizedContainerService.HintSize="334,60" sap2010:WorkflowViewState.IdRef="Assign_34">
+                    <Assign.To>
+                      <OutArgument x:TypeArguments="x:String">[ButtonOfTamamSelector]</OutArgument>
+                    </Assign.To>
+                    <Assign.Value>
+                      <InArgument x:TypeArguments="x:String">[in_Config("ButtonOfTamamSelector").ToString]</InArgument>
+                    </Assign.Value>
+                  </Assign>
+                </Sequence>
+                <Sequence DisplayName="Perform Sequence" sap:VirtualizedContainerService.HintSize="334,66" sap2010:WorkflowViewState.IdRef="Sequence_71">
+                  <sap:WorkflowViewStateService.ViewState>
+                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                      <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                      <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                    </scg:Dictionary>
+                  </sap:WorkflowViewStateService.ViewState>
+                  <ui:SelectItem AlterIfDisabled="{x:Null}" ContinueOnError="{x:Null}" DelayAfter="{x:Null}" DelayBefore="{x:Null}" DisplayName="Select Item 'ALL Cities'" sap:VirtualizedContainerService.HintSize="359,134" sap2010:WorkflowViewState.IdRef="SelectItem_5" Item="[SecilecekIL.ToUpper]">
+                    <ui:SelectItem.Items>
+                      <scg:List x:TypeArguments="x:String" Capacity="50">
+                        <x:String>Seçiniz</x:String>
+                        <x:String>ADANA</x:String>
+                        <x:String>ADIYAMAN</x:String>
+                        <x:String>AFYONKARAHİSAR</x:String>
+                        <x:String>AĞRI</x:String>
+                        <x:String>AKSARAY</x:String>
+                        <x:String>AMASYA</x:String>
+                        <x:String>ANKARA</x:String>
+                        <x:String>ANTALYA</x:String>
+                        <x:String>ARDAHAN</x:String>
+                        <x:String>ARTVİN</x:String>
+                        <x:String>AYDIN</x:String>
+                        <x:String>BALIKESİR</x:String>
+                        <x:String>BARTIN</x:String>
+                        <x:String>BATMAN</x:String>
+                        <x:String>BAYBURT</x:String>
+                        <x:String>BİLECİK</x:String>
+                        <x:String>BİNGÖL</x:String>
+                        <x:String>BİTLİS</x:String>
+                        <x:String>BOLU</x:String>
+                        <x:String>BURDUR</x:String>
+                        <x:String>BURSA</x:String>
+                        <x:String>ÇANAKKALE</x:String>
+                        <x:String>ÇANKIRI</x:String>
+                        <x:String>ÇORUM</x:String>
+                        <x:String>DENİZLİ</x:String>
+                        <x:String>DİYARBAKIR</x:String>
+                        <x:String>DÜZCE</x:String>
+                        <x:String>EDİRNE</x:String>
+                        <x:String>ELAZIĞ</x:String>
+                        <x:String>ERZİNCAN</x:String>
+                        <x:String>ERZURUM</x:String>
+                        <x:String>ESKİŞEHİR</x:String>
+                        <x:String>GAZİANTEP</x:String>
+                        <x:String>GİRESUN</x:String>
+                        <x:String>GÜMÜŞHANE</x:String>
+                        <x:String>HAKKARİ</x:String>
+                        <x:String>HATAY</x:String>
+                        <x:String>IĞDIR</x:String>
+                        <x:String>ISPARTA</x:String>
+                        <x:String>İSTANBUL</x:String>
+                        <x:String>İZMİR</x:String>
+                        <x:String>KAHRAMANMARAŞ</x:String>
+                        <x:String>KARABÜK</x:String>
+                        <x:String>KARAMAN</x:String>
+                        <x:String>KARS</x:String>
+                        <x:String>KASTAMONU</x:String>
+                        <x:String>KAYSERİ</x:String>
+                        <x:String>KIRIKKALE</x:String>
+                        <x:String>KIRKLARELİ</x:String>
+                      </scg:List>
+                    </ui:SelectItem.Items>
+                    <ui:SelectItem.Target>
+                      <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="70d5f8a9-36ae-45aa-8bf8-db88619ec6b7" InformativeScreenshot="26215acc2cbe8320b63cfbb446bf59d6" Selector="[SecilecekILSelector]">
+                        <ui:Target.TimeoutMS>
+                          <InArgument x:TypeArguments="x:Int32" />
+                        </ui:Target.TimeoutMS>
+                        <ui:Target.WaitForReady>
+                          <InArgument x:TypeArguments="ui:WaitForReady" />
+                        </ui:Target.WaitForReady>
+                      </ui:Target>
+                    </ui:SelectItem.Target>
+                  </ui:SelectItem>
+                  <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="359,91" sap2010:WorkflowViewState.IdRef="LogMessage_32" Level="Info" Message="[&quot;Ekranda il seçildi.&quot;]" />
+                  <Delay DisplayName="Delay 1" Duration="00:00:01" sap:VirtualizedContainerService.HintSize="359,22" sap2010:WorkflowViewState.IdRef="Delay_5" />
+                  <ui:GetAttribute ContinueOnError="{x:Null}" Attribute="outerhtml" DisplayName="Get Attribute 'ILCE GET htmlText'" sap:VirtualizedContainerService.HintSize="359,202" sap2010:WorkflowViewState.IdRef="GetAttribute_2">
+                    <ui:GetAttribute.Result>
+                      <OutArgument x:TypeArguments="x:String">[htmlText]</OutArgument>
+                    </ui:GetAttribute.Result>
+                    <ui:GetAttribute.Target>
+                      <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="7443cf07-bc50-46ec-968a-b8df62193cbf" InformativeScreenshot="9c322ecbc08e29238448a97487ebb673" Selector="[SecilecekILceSelector]">
+                        <ui:Target.TimeoutMS>
+                          <InArgument x:TypeArguments="x:Int32" />
+                        </ui:Target.TimeoutMS>
+                        <ui:Target.WaitForReady>
+                          <InArgument x:TypeArguments="ui:WaitForReady" />
+                        </ui:Target.WaitForReady>
+                      </ui:Target>
+                    </ui:GetAttribute.Target>
+                    <sap:WorkflowViewStateService.ViewState>
+                      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                        <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                      </scg:Dictionary>
+                    </sap:WorkflowViewStateService.ViewState>
+                  </ui:GetAttribute>
+                  <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="359,91" sap2010:WorkflowViewState.IdRef="LogMessage_33" Level="Info" Message="[&quot;İlçe isimleri alındı.&quot;]" />
+                  <Assign sap:VirtualizedContainerService.HintSize="359,60" sap2010:WorkflowViewState.IdRef="Assign_17">
+                    <Assign.To>
+                      <OutArgument x:TypeArguments="sxl:XElement">[Xelement_text]</OutArgument>
+                    </Assign.To>
+                    <Assign.Value>
+                      <InArgument x:TypeArguments="sxl:XElement">[XElement.Parse(htmlText)]</InArgument>
+                    </Assign.Value>
+                  </Assign>
+                  <Assign sap:VirtualizedContainerService.HintSize="359,60" sap2010:WorkflowViewState.IdRef="Assign_18">
+                    <Assign.To>
+                      <OutArgument x:TypeArguments="scg:List(x:String)">[ListOfILce]</OutArgument>
+                    </Assign.To>
+                    <Assign.Value>
+                      <InArgument x:TypeArguments="scg:List(x:String)">[Xelement_text.Descendants("option").Select(function(r) r.Value).Tolist()]</InArgument>
+                    </Assign.Value>
+                  </Assign>
+                  <Assign sap:VirtualizedContainerService.HintSize="359,60" sap2010:WorkflowViewState.IdRef="Assign_19">
+                    <Assign.To>
+                      <OutArgument x:TypeArguments="scg:List(x:String)">[ListOfILce]</OutArgument>
+                    </Assign.To>
+                    <Assign.Value>
+                      <InArgument x:TypeArguments="scg:List(x:String)" xml:space="preserve">[ListOfILce.Where(function(x) not  x.Contains("Seçiniz")).ToList()]</InArgument>
+                    </Assign.Value>
+                  </Assign>
+                  <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="359,91" sap2010:WorkflowViewState.IdRef="LogMessage_34" Level="Info" Message="[&quot;Selektor ile tüm vergi dairelerinin listesi alındı.&quot;]" />
+                  <Assign sap:VirtualizedContainerService.HintSize="359,60" sap2010:WorkflowViewState.IdRef="Assign_20">
+                    <Assign.To>
+                      <OutArgument x:TypeArguments="scg:List(x:String)">[FilteredOfILceList]</OutArgument>
+                    </Assign.To>
+                    <Assign.Value>
+                      <InArgument x:TypeArguments="scg:List(x:String)">[ListOfILce.Where(function(t) t.Contains(SecilecekVergiDairesi.ToUpper(new Globalization.CultureInfo("TR-tr",false)))).ToList()]</InArgument>
+                    </Assign.Value>
+                  </Assign>
+                  <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="359,91" sap2010:WorkflowViewState.IdRef="LogMessage_35" Level="Info" Message="[&quot;Aranacak Vergi Dairesi ile eşleşen Vergi daireleri listeye alındı.&quot;]" />
+                  <Assign sap:VirtualizedContainerService.HintSize="359,60" sap2010:WorkflowViewState.IdRef="Assign_29">
+                    <Assign.To>
+                      <OutArgument x:TypeArguments="x:String">[DogrulamaEkranıSelector]</OutArgument>
+                    </Assign.To>
+                    <Assign.Value>
+                      <InArgument x:TypeArguments="x:String">[in_Config("DogrulamaEkranıSelector").ToString]</InArgument>
+                    </Assign.Value>
+                  </Assign>
+                  <If Condition="[FilteredOfILceList.Count &gt; 0]" sap:VirtualizedContainerService.HintSize="359,51" sap2010:WorkflowViewState.IdRef="If_26">
+                    <sap:WorkflowViewStateService.ViewState>
+                      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                        <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                        <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                      </scg:Dictionary>
+                    </sap:WorkflowViewStateService.ViewState>
+                    <If.Then>
+                      <Sequence DisplayName="İlçe Bilgisi İl İçin Doğru İse:" sap:VirtualizedContainerService.HintSize="200,66" sap2010:WorkflowViewState.IdRef="Sequence_50">
+                        <sap:WorkflowViewStateService.ViewState>
+                          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                            <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                            <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                          </scg:Dictionary>
+                        </sap:WorkflowViewStateService.ViewState>
+                        <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="359,91" sap2010:WorkflowViewState.IdRef="LogMessage_62" Level="Info" Message="[&quot;Bilgilerde yer alan Vergi Dairesi ilgili il için deneniyor.&quot;]" />
+                        <ui:SelectItem AlterIfDisabled="{x:Null}" ContinueOnError="{x:Null}" DelayAfter="{x:Null}" DelayBefore="{x:Null}" Items="{x:Null}" DisplayName="Select Item" sap:VirtualizedContainerService.HintSize="359,96" sap2010:WorkflowViewState.IdRef="SelectItem_6" Item="[FilteredOfILceList(0)]">
+                          <ui:SelectItem.Target>
+                            <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="cef85980-0f82-4974-b9d2-b06419ef4b06" Selector="[SecilecekILceSelector]" WaitForReady="NONE">
+                              <ui:Target.TimeoutMS>
+                                <InArgument x:TypeArguments="x:Int32" />
+                              </ui:Target.TimeoutMS>
+                            </ui:Target>
+                          </ui:SelectItem.Target>
+                        </ui:SelectItem>
+                        <Sequence sap2010:Annotation.AnnotationText="Doğrula butonuna basma işlemlerini içerir.&#xA;" DisplayName="Button Of Doğrula" sap:VirtualizedContainerService.HintSize="359,123" sap2010:WorkflowViewState.IdRef="Sequence_38">
+                          <sap:WorkflowViewStateService.ViewState>
+                            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                              <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                              <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+                              <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                            </scg:Dictionary>
+                          </sap:WorkflowViewStateService.ViewState>
+                          <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="484,91" sap2010:WorkflowViewState.IdRef="LogMessage_63" Level="Info" Message="[&quot;Doğrulama butonu ekranda aranıyor.&quot;]" />
+                          <ui:UiElementExists DisplayName="Element Exists 'BUTTON  Of Doğrula '" Exists="[IsDoğrulaButtonExist]" sap:VirtualizedContainerService.HintSize="484,106" sap2010:WorkflowViewState.IdRef="UiElementExists_7">
+                            <ui:UiElementExists.Target>
+                              <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="7d96683c-93e1-4c83-a552-777843688188" InformativeScreenshot="136a1778abb88d6551f334824e887ffd" Selector="[ButtonOfDogrulaSelector]" WaitForReady="COMPLETE">
+                                <ui:Target.TimeoutMS>
+                                  <InArgument x:TypeArguments="x:Int32" />
+                                </ui:Target.TimeoutMS>
+                              </ui:Target>
+                            </ui:UiElementExists.Target>
+                          </ui:UiElementExists>
+                          <Delay Duration="00:00:01" sap:VirtualizedContainerService.HintSize="484,22" sap2010:WorkflowViewState.IdRef="Delay_9" />
+                          <If Condition="[IsDoğrulaButtonExist]" DisplayName="If Button Of Doğrula Exist" sap:VirtualizedContainerService.HintSize="484,223" sap2010:WorkflowViewState.IdRef="If_16">
+                            <sap:WorkflowViewStateService.ViewState>
+                              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                              </scg:Dictionary>
+                            </sap:WorkflowViewStateService.ViewState>
+                            <If.Then>
+                              <Sequence DisplayName="Element Click" sap:VirtualizedContainerService.HintSize="200,66" sap2010:WorkflowViewState.IdRef="Sequence_34">
+                                <sap:WorkflowViewStateService.ViewState>
+                                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                    <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                                    <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                                  </scg:Dictionary>
+                                </sap:WorkflowViewStateService.ViewState>
+                                <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="334,91" sap2010:WorkflowViewState.IdRef="LogMessage_36" Level="Info" Message="[&quot;Doğrula butonu ekranda mevcut.&quot;]" />
+                                <ui:Click AlterIfDisabled="{x:Null}" DelayBefore="{x:Null}" DelayMS="{x:Null}" SendWindowMessages="{x:Null}" ClickType="CLICK_DOUBLE" DisplayName="Click 'Doğrula'" sap:VirtualizedContainerService.HintSize="334,106" sap2010:WorkflowViewState.IdRef="Click_9" KeyModifiers="None" MouseButton="BTN_LEFT" SimulateClick="False">
+                                  <ui:Click.CursorPosition>
+                                    <ui:CursorPosition Position="Center">
+                                      <ui:CursorPosition.OffsetX>
+                                        <InArgument x:TypeArguments="x:Int32" />
+                                      </ui:CursorPosition.OffsetX>
+                                      <ui:CursorPosition.OffsetY>
+                                        <InArgument x:TypeArguments="x:Int32" />
+                                      </ui:CursorPosition.OffsetY>
+                                    </ui:CursorPosition>
+                                  </ui:Click.CursorPosition>
+                                  <ui:Click.Target>
+                                    <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="1875eee8-4340-48ff-8738-6bbca55b490c" InformativeScreenshot="136a1778abb88d6551f334824e887ffd" Selector="[ButtonOfDogrulaSelector]" WaitForReady="COMPLETE">
+                                      <ui:Target.TimeoutMS>
+                                        <InArgument x:TypeArguments="x:Int32" />
+                                      </ui:Target.TimeoutMS>
+                                    </ui:Target>
+                                  </ui:Click.Target>
+                                </ui:Click>
+                                <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="334,91" sap2010:WorkflowViewState.IdRef="LogMessage_37" Level="Info" Message="[&quot;Doğrula butonu elementine tıklandı.&quot;]" />
+                              </Sequence>
+                            </If.Then>
+                            <If.Else>
+                              <Sequence DisplayName="Image Click" sap:VirtualizedContainerService.HintSize="200,66" sap2010:WorkflowViewState.IdRef="Sequence_37">
+                                <Sequence.Variables>
+                                  <Variable x:TypeArguments="x:Boolean" Name="IsButtonOfDoğrulaImageExist" />
+                                  <Variable x:TypeArguments="x:String" Name="ImageExistButtonOfDoğrulaSelector" />
+                                </Sequence.Variables>
+                                <sap:WorkflowViewStateService.ViewState>
+                                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                    <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                                    <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                                  </scg:Dictionary>
+                                </sap:WorkflowViewStateService.ViewState>
+                                <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="484,91" sap2010:WorkflowViewState.IdRef="LogMessage_64" Level="Info" Message="[&quot;Doğrula ımage ekranda aranıyor.&quot;]" />
+                                <ui:ImageFound DisplayName="Button Of Doğrula İmage Exists" Found="[IsButtonOfDoğrulaImageExist]" sap:VirtualizedContainerService.HintSize="484,106" sap2010:WorkflowViewState.IdRef="ImageFound_4">
+                                  <ui:ImageFound.Image>
+                                    <ui:ImageTarget Image="{x:Null}" Accuracy="0.8" Profile="Basic" TargetImageBase64="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" />
+                                  </ui:ImageFound.Image>
+                                  <ui:ImageFound.Target>
+                                    <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="790a25d4-101b-4ae9-8530-988c1fd5d600" Selector="[ButtonOfDogrulaSelector]">
+                                      <ui:Target.TimeoutMS>
+                                        <InArgument x:TypeArguments="x:Int32" />
+                                      </ui:Target.TimeoutMS>
+                                      <ui:Target.WaitForReady>
+                                        <InArgument x:TypeArguments="ui:WaitForReady" />
+                                      </ui:Target.WaitForReady>
+                                    </ui:Target>
+                                  </ui:ImageFound.Target>
+                                </ui:ImageFound>
+                                <If Condition="[IsButtonOfDoğrulaImageExist]" sap:VirtualizedContainerService.HintSize="484,223" sap2010:WorkflowViewState.IdRef="If_15">
+                                  <sap:WorkflowViewStateService.ViewState>
+                                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                      <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                      <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                                    </scg:Dictionary>
+                                  </sap:WorkflowViewStateService.ViewState>
+                                  <If.Then>
+                                    <Sequence sap:VirtualizedContainerService.HintSize="200,66" sap2010:WorkflowViewState.IdRef="Sequence_35">
+                                      <sap:WorkflowViewStateService.ViewState>
+                                        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                          <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                                          <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                                        </scg:Dictionary>
+                                      </sap:WorkflowViewStateService.ViewState>
+                                      <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="334,91" sap2010:WorkflowViewState.IdRef="LogMessage_65" Level="Info" Message="[&quot;Doğrula ımage ekranda bulundu.&quot;]" />
+                                      <ui:ClickImage ContinueOnError="{x:Null}" DelayBefore="{x:Null}" DelayMS="{x:Null}" SendWindowMessages="{x:Null}" ClickType="CLICK_SINGLE" DisplayName="Click Image 'Button Of Doğrula'" sap:VirtualizedContainerService.HintSize="334,154" sap2010:WorkflowViewState.IdRef="ClickImage_4" KeyModifiers="None" MouseButton="BTN_LEFT">
+                                        <ui:ClickImage.CursorPosition>
+                                          <ui:CursorPosition Position="Center">
+                                            <ui:CursorPosition.OffsetX>
+                                              <InArgument x:TypeArguments="x:Int32" />
+                                            </ui:CursorPosition.OffsetX>
+                                            <ui:CursorPosition.OffsetY>
+                                              <InArgument x:TypeArguments="x:Int32" />
+                                            </ui:CursorPosition.OffsetY>
+                                          </ui:CursorPosition>
+                                        </ui:ClickImage.CursorPosition>
+                                        <ui:ClickImage.Image>
+                                          <ui:ImageTarget Image="{x:Null}" Accuracy="0.8" Profile="Basic" TargetImageBase64="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" />
+                                        </ui:ClickImage.Image>
+                                        <ui:ClickImage.Target>
+                                          <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="4ae486f5-c780-4463-94b8-70e99b843bc3" Selector="[ButtonOfDogrulaSelector]">
+                                            <ui:Target.TimeoutMS>
+                                              <InArgument x:TypeArguments="x:Int32" />
+                                            </ui:Target.TimeoutMS>
+                                            <ui:Target.WaitForReady>
+                                              <InArgument x:TypeArguments="ui:WaitForReady" />
+                                            </ui:Target.WaitForReady>
+                                          </ui:Target>
+                                        </ui:ClickImage.Target>
+                                        <sap:WorkflowViewStateService.ViewState>
+                                          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                            <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                                          </scg:Dictionary>
+                                        </sap:WorkflowViewStateService.ViewState>
+                                      </ui:ClickImage>
+                                      <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="334,91" sap2010:WorkflowViewState.IdRef="LogMessage_38" Level="Info" Message="[&quot;Doğrula buton imgesine tıklandı.&quot;]" />
+                                    </Sequence>
+                                  </If.Then>
+                                  <If.Else>
+                                    <Sequence sap:VirtualizedContainerService.HintSize="200,66" sap2010:WorkflowViewState.IdRef="Sequence_36">
+                                      <sap:WorkflowViewStateService.ViewState>
+                                        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                          <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                                          <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                                        </scg:Dictionary>
+                                      </sap:WorkflowViewStateService.ViewState>
+                                      <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="334,91" sap2010:WorkflowViewState.IdRef="LogMessage_39" Level="Info" Message="[&quot;Doğrula butonu görülmedi.&quot;]" />
+                                      <Throw Exception="[new Exception(&quot;Doğrula butonu mevcut değil.&quot;)]" sap:VirtualizedContainerService.HintSize="334,22" sap2010:WorkflowViewState.IdRef="Throw_6" />
+                                    </Sequence>
+                                  </If.Else>
+                                </If>
+                              </Sequence>
+                            </If.Else>
+                          </If>
+                        </Sequence>
+                        <ui:UiElementExists DisplayName="Tamam Butonu Exist" Exists="[IsDoğrulamaEkranıExist]" sap:VirtualizedContainerService.HintSize="359,106" sap2010:WorkflowViewState.IdRef="UiElementExists_8">
+                          <ui:UiElementExists.Target>
+                            <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="aaf53641-bc10-4e83-8b8c-844aef3bd1b9" InformativeScreenshot="361b2f22bd5c9941e6b2539a80ee8b49" Selector="[ButtonOfTamamSelector]" TimeoutMS="3000" WaitForReady="NONE" />
+                          </ui:UiElementExists.Target>
+                        </ui:UiElementExists>
+                        <If Condition="[not IsDoğrulamaEkranıExist]" DisplayName="If- Girilen Bilgiler Doğru ve Ekran Geldi:" sap:VirtualizedContainerService.HintSize="359,51" sap2010:WorkflowViewState.IdRef="If_21">
+                          <sap:WorkflowViewStateService.ViewState>
+                            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                              <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                              <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                            </scg:Dictionary>
+                          </sap:WorkflowViewStateService.ViewState>
+                          <If.Then>
+                            <Sequence DisplayName="Veri Dairesi Bilgisi Doğru:" sap:VirtualizedContainerService.HintSize="200,66" sap2010:WorkflowViewState.IdRef="Sequence_39">
+                              <sap:WorkflowViewStateService.ViewState>
+                                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                  <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                                  <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                                </scg:Dictionary>
+                              </sap:WorkflowViewStateService.ViewState>
+                              <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="334,91" sap2010:WorkflowViewState.IdRef="LogMessage_40" Level="Info" Message="[&quot;Vergi Dairesi bilgisi doğrudur.. Get Text aşamasına geçilecektir.&quot;]" />
+                            </Sequence>
+                          </If.Then>
+                          <If.Else>
+                            <Sequence DisplayName="İlçe Bilgisi Yanlıştır ve döngü başlar:" sap:VirtualizedContainerService.HintSize="476,549" sap2010:WorkflowViewState.IdRef="Sequence_49">
+                              <sap:WorkflowViewStateService.ViewState>
+                                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                  <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                  <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                                </scg:Dictionary>
+                              </sap:WorkflowViewStateService.ViewState>
+                              <Sequence DisplayName="Hata/Uyarı Mesajı Geldiyse:" sap:VirtualizedContainerService.HintSize="434,66" sap2010:WorkflowViewState.IdRef="Sequence_40">
+                                <sap:WorkflowViewStateService.ViewState>
+                                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                    <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                                    <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                                  </scg:Dictionary>
+                                </sap:WorkflowViewStateService.ViewState>
+                                <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="334,91" sap2010:WorkflowViewState.IdRef="LogMessage_66" Level="Info" Message="[&quot;Ekranda hata/uyarı mesajı görüldü.&quot;]" />
+                                <ui:Click AlterIfDisabled="{x:Null}" DelayBefore="{x:Null}" DelayMS="{x:Null}" SendWindowMessages="{x:Null}" ClickType="CLICK_DOUBLE" DisplayName="Click 'Tamam Button'" sap:VirtualizedContainerService.HintSize="334,106" sap2010:WorkflowViewState.IdRef="Click_10" KeyModifiers="None" MouseButton="BTN_LEFT" SimulateClick="False">
+                                  <ui:Click.CursorPosition>
+                                    <ui:CursorPosition Position="Center">
+                                      <ui:CursorPosition.OffsetX>
+                                        <InArgument x:TypeArguments="x:Int32" />
+                                      </ui:CursorPosition.OffsetX>
+                                      <ui:CursorPosition.OffsetY>
+                                        <InArgument x:TypeArguments="x:Int32" />
+                                      </ui:CursorPosition.OffsetY>
+                                    </ui:CursorPosition>
+                                  </ui:Click.CursorPosition>
+                                  <ui:Click.Target>
+                                    <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="bb4365bd-c10e-4728-a9ae-0bb5bd7abf98" InformativeScreenshot="926dd9eee7f691c3067ad8c03ac5fafd" Selector="[ButtonOfTamamSelector]" TimeoutMS="3000" WaitForReady="COMPLETE" />
+                                  </ui:Click.Target>
+                                  <sap:WorkflowViewStateService.ViewState>
+                                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                      <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                      <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                                    </scg:Dictionary>
+                                  </sap:WorkflowViewStateService.ViewState>
+                                </ui:Click>
+                                <Delay Duration="00:00:01" sap:VirtualizedContainerService.HintSize="334,22" sap2010:WorkflowViewState.IdRef="Delay_6" />
+                                <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="334,91" sap2010:WorkflowViewState.IdRef="LogMessage_41" Level="Info" Message="[&quot;Hata/Uyarı mesajı ignore edildi.&quot;]" />
+                              </Sequence>
+                              <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="434,91" sap2010:WorkflowViewState.IdRef="LogMessage_67" Level="Info" Message="[&quot;Vergi daireleri sırasıyla denenmeye başlandı.&quot;]" />
+                              <ui:ForEach x:TypeArguments="x:Object" CurrentIndex="{x:Null}" sap2010:Annotation.AnnotationText="İlk denenen vergi dairesi çıkarılarak tüm vergi daireleri gezilir." DisplayName="For Each - Doğru İlçe Müdürlüğü Aranır:" sap:VirtualizedContainerService.HintSize="434,220" sap2010:WorkflowViewState.IdRef="ForEach`1_4" Values="[ListOfILce.Except(FilteredOfILceList)]">
+                                <ui:ForEach.Body>
+                                  <ActivityAction x:TypeArguments="x:Object">
+                                    <ActivityAction.Argument>
+                                      <DelegateInArgument x:TypeArguments="x:Object" Name="item" />
+                                    </ActivityAction.Argument>
+                                    <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="200,66" sap2010:WorkflowViewState.IdRef="Sequence_48">
+                                      <sap:WorkflowViewStateService.ViewState>
+                                        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                          <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                                          <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                                        </scg:Dictionary>
+                                      </sap:WorkflowViewStateService.ViewState>
+                                      <ui:SelectItem AlterIfDisabled="{x:Null}" ContinueOnError="{x:Null}" DelayAfter="{x:Null}" DelayBefore="{x:Null}" Items="{x:Null}" DisplayName="Select Item" sap:VirtualizedContainerService.HintSize="484,96" sap2010:WorkflowViewState.IdRef="SelectItem_7" Item="[item.ToString]">
+                                        <ui:SelectItem.Target>
+                                          <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="0fe96b01-86c4-4979-9275-4a040c8e2fee" Selector="[SecilecekILceSelector]" WaitForReady="NONE">
+                                            <ui:Target.TimeoutMS>
+                                              <InArgument x:TypeArguments="x:Int32" />
+                                            </ui:Target.TimeoutMS>
+                                          </ui:Target>
+                                        </ui:SelectItem.Target>
+                                      </ui:SelectItem>
+                                      <Sequence sap2010:Annotation.AnnotationText="Doğrula butonuna basma işlemlerini içerir.&#xA;" DisplayName="Button Of Doğrula" sap:VirtualizedContainerService.HintSize="484,123" sap2010:WorkflowViewState.IdRef="Sequence_45">
+                                        <sap:WorkflowViewStateService.ViewState>
+                                          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                            <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                                            <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+                                            <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                                          </scg:Dictionary>
+                                        </sap:WorkflowViewStateService.ViewState>
+                                        <ui:UiElementExists DisplayName="Element Exists 'BUTTON  Of Doğrula '" Exists="[IsDoğrulaButtonExist]" sap:VirtualizedContainerService.HintSize="484,106" sap2010:WorkflowViewState.IdRef="UiElementExists_9">
+                                          <ui:UiElementExists.Target>
+                                            <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="7d96683c-93e1-4c83-a552-777843688188" InformativeScreenshot="136a1778abb88d6551f334824e887ffd" Selector="[ButtonOfDogrulaSelector]" TimeoutMS="3000" WaitForReady="NONE" />
+                                          </ui:UiElementExists.Target>
+                                        </ui:UiElementExists>
+                                        <Delay Duration="00:00:01" sap:VirtualizedContainerService.HintSize="484,22" sap2010:WorkflowViewState.IdRef="Delay_10" />
+                                        <If Condition="[IsDoğrulaButtonExist]" DisplayName="If Button Of Doğrula Exist" sap:VirtualizedContainerService.HintSize="484,223" sap2010:WorkflowViewState.IdRef="If_18">
+                                          <sap:WorkflowViewStateService.ViewState>
+                                            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                              <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                                            </scg:Dictionary>
+                                          </sap:WorkflowViewStateService.ViewState>
+                                          <If.Then>
+                                            <Sequence DisplayName="Element Click" sap:VirtualizedContainerService.HintSize="200,66" sap2010:WorkflowViewState.IdRef="Sequence_41">
+                                              <sap:WorkflowViewStateService.ViewState>
+                                                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                                  <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                                                  <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                                                </scg:Dictionary>
+                                              </sap:WorkflowViewStateService.ViewState>
+                                              <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="334,91" sap2010:WorkflowViewState.IdRef="LogMessage_42" Level="Info" Message="[&quot;Doğrula butonu ekranda mevcut.&quot;]">
+                                                <sap:WorkflowViewStateService.ViewState>
+                                                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                                    <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                                    <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                                                  </scg:Dictionary>
+                                                </sap:WorkflowViewStateService.ViewState>
+                                              </ui:LogMessage>
+                                              <ui:Click AlterIfDisabled="{x:Null}" DelayBefore="{x:Null}" DelayMS="{x:Null}" SendWindowMessages="{x:Null}" SimulateClick="{x:Null}" ClickType="CLICK_SINGLE" DisplayName="Click 'Doğrula'" sap:VirtualizedContainerService.HintSize="334,106" sap2010:WorkflowViewState.IdRef="Click_11" KeyModifiers="None" MouseButton="BTN_LEFT">
+                                                <ui:Click.CursorPosition>
+                                                  <ui:CursorPosition Position="Center">
+                                                    <ui:CursorPosition.OffsetX>
+                                                      <InArgument x:TypeArguments="x:Int32" />
+                                                    </ui:CursorPosition.OffsetX>
+                                                    <ui:CursorPosition.OffsetY>
+                                                      <InArgument x:TypeArguments="x:Int32" />
+                                                    </ui:CursorPosition.OffsetY>
+                                                  </ui:CursorPosition>
+                                                </ui:Click.CursorPosition>
+                                                <ui:Click.Target>
+                                                  <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="1875eee8-4340-48ff-8738-6bbca55b490c" InformativeScreenshot="136a1778abb88d6551f334824e887ffd" Selector="[ButtonOfDogrulaSelector]" WaitForReady="COMPLETE">
+                                                    <ui:Target.TimeoutMS>
+                                                      <InArgument x:TypeArguments="x:Int32" />
+                                                    </ui:Target.TimeoutMS>
+                                                  </ui:Target>
+                                                </ui:Click.Target>
+                                              </ui:Click>
+                                              <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="334,91" sap2010:WorkflowViewState.IdRef="LogMessage_43" Level="Info" Message="[&quot;Doğrula butonu elementine  tıklandı.&quot;]" />
+                                            </Sequence>
+                                          </If.Then>
+                                          <If.Else>
+                                            <Sequence DisplayName="Image Click" sap:VirtualizedContainerService.HintSize="200,66" sap2010:WorkflowViewState.IdRef="Sequence_44">
+                                              <Sequence.Variables>
+                                                <Variable x:TypeArguments="x:Boolean" Name="IsButtonOfDoğrulaImageExist" />
+                                              </Sequence.Variables>
+                                              <sap:WorkflowViewStateService.ViewState>
+                                                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                                  <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                                                  <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                                                </scg:Dictionary>
+                                              </sap:WorkflowViewStateService.ViewState>
+                                              <ui:ImageFound DisplayName="Button Of Doğrula İmage Exists" Found="[IsButtonOfDoğrulaImageExist]" sap:VirtualizedContainerService.HintSize="484,106" sap2010:WorkflowViewState.IdRef="ImageFound_5">
+                                                <ui:ImageFound.Image>
+                                                  <ui:ImageTarget Image="{x:Null}" Accuracy="0.8" Profile="Basic" TargetImageBase64="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" />
+                                                </ui:ImageFound.Image>
+                                                <ui:ImageFound.Target>
+                                                  <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="790a25d4-101b-4ae9-8530-988c1fd5d600" Selector="[ButtonOfDogrulaSelector]">
+                                                    <ui:Target.TimeoutMS>
+                                                      <InArgument x:TypeArguments="x:Int32" />
+                                                    </ui:Target.TimeoutMS>
+                                                    <ui:Target.WaitForReady>
+                                                      <InArgument x:TypeArguments="ui:WaitForReady" />
+                                                    </ui:Target.WaitForReady>
+                                                  </ui:Target>
+                                                </ui:ImageFound.Target>
+                                              </ui:ImageFound>
+                                              <If Condition="[IsButtonOfDoğrulaImageExist]" sap:VirtualizedContainerService.HintSize="484,223" sap2010:WorkflowViewState.IdRef="If_17">
+                                                <sap:WorkflowViewStateService.ViewState>
+                                                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                                    <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                                    <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                                                  </scg:Dictionary>
+                                                </sap:WorkflowViewStateService.ViewState>
+                                                <If.Then>
+                                                  <Sequence sap:VirtualizedContainerService.HintSize="200,66" sap2010:WorkflowViewState.IdRef="Sequence_42">
+                                                    <sap:WorkflowViewStateService.ViewState>
+                                                      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                                        <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                                                        <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                                                      </scg:Dictionary>
+                                                    </sap:WorkflowViewStateService.ViewState>
+                                                    <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="334,91" sap2010:WorkflowViewState.IdRef="LogMessage_68" Level="Info" Message="[&quot;Ekranda doğrula butonu imgesi  mevcut.&quot;]" />
+                                                    <ui:ClickImage ContinueOnError="{x:Null}" DelayBefore="{x:Null}" DelayMS="{x:Null}" SendWindowMessages="{x:Null}" ClickType="CLICK_SINGLE" DisplayName="Click Image 'Button Of Doğrula'" sap:VirtualizedContainerService.HintSize="334,154" sap2010:WorkflowViewState.IdRef="ClickImage_5" KeyModifiers="None" MouseButton="BTN_MIDDLE">
+                                                      <ui:ClickImage.CursorPosition>
+                                                        <ui:CursorPosition Position="Center">
+                                                          <ui:CursorPosition.OffsetX>
+                                                            <InArgument x:TypeArguments="x:Int32" />
+                                                          </ui:CursorPosition.OffsetX>
+                                                          <ui:CursorPosition.OffsetY>
+                                                            <InArgument x:TypeArguments="x:Int32" />
+                                                          </ui:CursorPosition.OffsetY>
+                                                        </ui:CursorPosition>
+                                                      </ui:ClickImage.CursorPosition>
+                                                      <ui:ClickImage.Image>
+                                                        <ui:ImageTarget Image="{x:Null}" Accuracy="0.8" Profile="Basic" TargetImageBase64="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" />
+                                                      </ui:ClickImage.Image>
+                                                      <ui:ClickImage.Target>
+                                                        <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="4ae486f5-c780-4463-94b8-70e99b843bc3" Selector="[ButtonOfDogrulaSelector]">
+                                                          <ui:Target.TimeoutMS>
+                                                            <InArgument x:TypeArguments="x:Int32" />
+                                                          </ui:Target.TimeoutMS>
+                                                          <ui:Target.WaitForReady>
+                                                            <InArgument x:TypeArguments="ui:WaitForReady" />
+                                                          </ui:Target.WaitForReady>
+                                                        </ui:Target>
+                                                      </ui:ClickImage.Target>
+                                                      <sap:WorkflowViewStateService.ViewState>
+                                                        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                                          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                                          <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                                                        </scg:Dictionary>
+                                                      </sap:WorkflowViewStateService.ViewState>
+                                                    </ui:ClickImage>
+                                                    <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="334,91" sap2010:WorkflowViewState.IdRef="LogMessage_44" Level="Info" Message="[&quot;Doğrula butonu imgesine  tıklandı.&quot;]" />
+                                                  </Sequence>
+                                                </If.Then>
+                                                <If.Else>
+                                                  <Sequence sap:VirtualizedContainerService.HintSize="200,66" sap2010:WorkflowViewState.IdRef="Sequence_43">
+                                                    <sap:WorkflowViewStateService.ViewState>
+                                                      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                                        <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                                                        <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                                                      </scg:Dictionary>
+                                                    </sap:WorkflowViewStateService.ViewState>
+                                                    <Throw Exception="[new Exception(&quot;Doğrula butonu ekranda mevcut değil.&quot;)]" sap:VirtualizedContainerService.HintSize="200,22" sap2010:WorkflowViewState.IdRef="Throw_7" />
+                                                  </Sequence>
+                                                </If.Else>
+                                              </If>
+                                            </Sequence>
+                                          </If.Else>
+                                        </If>
+                                      </Sequence>
+                                      <ui:UiElementExists DisplayName="Tamam Butonu Exist" Exists="[IsDoğrulamaEkranıExist]" sap:VirtualizedContainerService.HintSize="484,106" sap2010:WorkflowViewState.IdRef="UiElementExists_10">
+                                        <ui:UiElementExists.Target>
+                                          <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="aaf53641-bc10-4e83-8b8c-844aef3bd1b9" InformativeScreenshot="5f0c9cc1a64de51c1574af4be805ad40" Selector="[ButtonOfTamamSelector]" TimeoutMS="2000" WaitForReady="NONE" />
+                                        </ui:UiElementExists.Target>
+                                      </ui:UiElementExists>
+                                      <If Condition="[IsDoğrulamaEkranıExist]" DisplayName="If- Doğrulama Ekranı Gelmediyse:" sap:VirtualizedContainerService.HintSize="484,51" sap2010:WorkflowViewState.IdRef="If_19">
+                                        <sap:WorkflowViewStateService.ViewState>
+                                          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                            <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                                            <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                                          </scg:Dictionary>
+                                        </sap:WorkflowViewStateService.ViewState>
+                                        <If.Then>
+                                          <Sequence DisplayName="Hata/Uyarı Mesajı Geldiyse:" sap:VirtualizedContainerService.HintSize="200,66" sap2010:WorkflowViewState.IdRef="Sequence_46">
+                                            <Sequence.Variables>
+                                              <Variable x:TypeArguments="x:Boolean" Name="IsImageTamamExist" />
+                                              <Variable x:TypeArguments="x:Boolean" Name="IsHataMesajıExist" />
+                                            </Sequence.Variables>
+                                            <sap:WorkflowViewStateService.ViewState>
+                                              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                                <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                                                <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                                              </scg:Dictionary>
+                                            </sap:WorkflowViewStateService.ViewState>
+                                            <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="334,91" sap2010:WorkflowViewState.IdRef="LogMessage_69" Level="Info" Message="[&quot;Ekranda hata/uyarı mesajı görüldü.&quot;]" />
+                                            <ui:Click AlterIfDisabled="{x:Null}" DelayBefore="{x:Null}" DelayMS="{x:Null}" SendWindowMessages="{x:Null}" ClickType="CLICK_SINGLE" DisplayName="Click Tamam Button" sap:VirtualizedContainerService.HintSize="334,106" sap2010:WorkflowViewState.IdRef="Click_12" KeyModifiers="None" MouseButton="BTN_LEFT" SimulateClick="True">
+                                              <ui:Click.CursorPosition>
+                                                <ui:CursorPosition Position="Center">
+                                                  <ui:CursorPosition.OffsetX>
+                                                    <InArgument x:TypeArguments="x:Int32" />
+                                                  </ui:CursorPosition.OffsetX>
+                                                  <ui:CursorPosition.OffsetY>
+                                                    <InArgument x:TypeArguments="x:Int32" />
+                                                  </ui:CursorPosition.OffsetY>
+                                                </ui:CursorPosition>
+                                              </ui:Click.CursorPosition>
+                                              <ui:Click.Target>
+                                                <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="2c53212a-2d3a-4186-8882-9e8efd8ffb1e" InformativeScreenshot="598fafc8b03884f11ef5eb7611cf7583" Selector="[ButtonOfTamamSelector]">
+                                                  <ui:Target.TimeoutMS>
+                                                    <InArgument x:TypeArguments="x:Int32" />
+                                                  </ui:Target.TimeoutMS>
+                                                  <ui:Target.WaitForReady>
+                                                    <InArgument x:TypeArguments="ui:WaitForReady" />
+                                                  </ui:Target.WaitForReady>
+                                                </ui:Target>
+                                              </ui:Click.Target>
+                                              <sap:WorkflowViewStateService.ViewState>
+                                                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                                  <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                                  <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                                                </scg:Dictionary>
+                                              </sap:WorkflowViewStateService.ViewState>
+                                            </ui:Click>
+                                            <Delay Duration="00:00:01" sap:VirtualizedContainerService.HintSize="334,22" sap2010:WorkflowViewState.IdRef="Delay_7" />
+                                            <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="334,91" sap2010:WorkflowViewState.IdRef="LogMessage_45" Level="Info" Message="[&quot;Hata/Uyarı mesajı ignore edildi.&quot;]" />
+                                          </Sequence>
+                                        </If.Then>
+                                        <If.Else>
+                                          <Sequence DisplayName="Doğru Ekran Geldiyse:" sap:VirtualizedContainerService.HintSize="200,66" sap2010:WorkflowViewState.IdRef="Sequence_47">
+                                            <sap:WorkflowViewStateService.ViewState>
+                                              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                                <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                                                <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                                              </scg:Dictionary>
+                                            </sap:WorkflowViewStateService.ViewState>
+                                            <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="334,91" sap2010:WorkflowViewState.IdRef="LogMessage_46" Level="Info" Message="[&quot;Doğrulama ekranı görüldü. Get Text ile bilgi alımı gerçekleşecektir.&quot;]" />
+                                            <ui:Break sap:VirtualizedContainerService.HintSize="334,22" sap2010:WorkflowViewState.IdRef="Break_3" />
+                                          </Sequence>
+                                        </If.Else>
+                                      </If>
+                                      <If Condition="[sayac = ListOfILce.Count-1]" sap:VirtualizedContainerService.HintSize="484,236" sap2010:WorkflowViewState.IdRef="If_20">
+                                        <sap:WorkflowViewStateService.ViewState>
+                                          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                            <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                                          </scg:Dictionary>
+                                        </sap:WorkflowViewStateService.ViewState>
+                                        <If.Then>
+                                          <Throw Exception="[new Exception(&quot;Aranan ildeki her vergi dairesi denenerek sonuç bulunamadı.&quot;)]" sap:VirtualizedContainerService.HintSize="200,22" sap2010:WorkflowViewState.IdRef="Throw_8" />
+                                        </If.Then>
+                                      </If>
+                                    </Sequence>
+                                  </ActivityAction>
+                                </ui:ForEach.Body>
+                                <sap:WorkflowViewStateService.ViewState>
+                                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                    <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                    <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                                    <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+                                  </scg:Dictionary>
+                                </sap:WorkflowViewStateService.ViewState>
+                              </ui:ForEach>
+                            </Sequence>
+                          </If.Else>
+                        </If>
+                      </Sequence>
+                    </If.Then>
+                    <If.Else>
+                      <ui:ForEach x:TypeArguments="x:Object" CurrentIndex="[sayac]" DisplayName="For Each - İlçe bilgisi Yanlış ve Doğruİlçe Müdürlüğü Aranır:" sap:VirtualizedContainerService.HintSize="200,51" sap2010:WorkflowViewState.IdRef="ForEach`1_5" Values="[ListOfILce]">
+                        <ui:ForEach.Body>
+                          <ActivityAction x:TypeArguments="x:Object">
+                            <ActivityAction.Argument>
+                              <DelegateInArgument x:TypeArguments="x:Object" Name="item" />
+                            </ActivityAction.Argument>
+                            <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="526,1205" sap2010:WorkflowViewState.IdRef="Sequence_58">
+                              <sap:WorkflowViewStateService.ViewState>
+                                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                  <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                  <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                                </scg:Dictionary>
+                              </sap:WorkflowViewStateService.ViewState>
+                              <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="484,91" sap2010:WorkflowViewState.IdRef="LogMessage_70" Level="Info" Message="[&quot;Bilgilerde yer alan Vergi Dairesi ilgili il için mevcut değil. Sırasıyla tğm Vergi daireleri denenecek.&quot;]" />
+                              <ui:SelectItem AlterIfDisabled="{x:Null}" ContinueOnError="{x:Null}" DelayAfter="{x:Null}" DelayBefore="{x:Null}" Items="{x:Null}" DisplayName="Select Vergi Dairesi" sap:VirtualizedContainerService.HintSize="484,134" sap2010:WorkflowViewState.IdRef="SelectItem_8" Item="[item.ToString]">
+                                <ui:SelectItem.Target>
+                                  <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="0fe96b01-86c4-4979-9275-4a040c8e2fee" InformativeScreenshot="ba327e23dabc67a089c429f3e2fef289" Selector="[SecilecekILceSelector]" WaitForReady="NONE">
+                                    <ui:Target.TimeoutMS>
+                                      <InArgument x:TypeArguments="x:Int32" />
+                                    </ui:Target.TimeoutMS>
+                                  </ui:Target>
+                                </ui:SelectItem.Target>
+                              </ui:SelectItem>
+                              <Sequence sap2010:Annotation.AnnotationText="Doğrula butonuna basma işlemlerini içerir.&#xA;" DisplayName="Button Of Doğrula" sap:VirtualizedContainerService.HintSize="484,123" sap2010:WorkflowViewState.IdRef="Sequence_64">
+                                <sap:WorkflowViewStateService.ViewState>
+                                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                    <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                                    <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+                                    <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                                  </scg:Dictionary>
+                                </sap:WorkflowViewStateService.ViewState>
+                                <ui:UiElementExists DisplayName="Element Exists 'BUTTON  Of Doğrula '" Exists="[IsDoğrulaButtonExist]" sap:VirtualizedContainerService.HintSize="484,106" sap2010:WorkflowViewState.IdRef="UiElementExists_13">
+                                  <ui:UiElementExists.Target>
+                                    <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="7d96683c-93e1-4c83-a552-777843688188" InformativeScreenshot="136a1778abb88d6551f334824e887ffd" Selector="[ButtonOfDogrulaSelector]" TimeoutMS="3000" WaitForReady="COMPLETE" />
+                                  </ui:UiElementExists.Target>
+                                </ui:UiElementExists>
+                                <If Condition="[IsDoğrulaButtonExist]" DisplayName="If Button Of Doğrula Exist" sap:VirtualizedContainerService.HintSize="484,223" sap2010:WorkflowViewState.IdRef="If_28">
+                                  <sap:WorkflowViewStateService.ViewState>
+                                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                      <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                      <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                                    </scg:Dictionary>
+                                  </sap:WorkflowViewStateService.ViewState>
+                                  <If.Then>
+                                    <Sequence DisplayName="Element Click" sap:VirtualizedContainerService.HintSize="200,66" sap2010:WorkflowViewState.IdRef="Sequence_60">
+                                      <sap:WorkflowViewStateService.ViewState>
+                                        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                          <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                                          <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                                        </scg:Dictionary>
+                                      </sap:WorkflowViewStateService.ViewState>
+                                      <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="334,91" sap2010:WorkflowViewState.IdRef="LogMessage_52" Level="Info" Message="[&quot;Doğrula butonu ekranda mevcut.&quot;]" />
+                                      <ui:Click AlterIfDisabled="{x:Null}" DelayBefore="{x:Null}" DelayMS="{x:Null}" SendWindowMessages="{x:Null}" ClickType="CLICK_DOUBLE" DisplayName="Click 'Doğrula'" sap:VirtualizedContainerService.HintSize="334,106" sap2010:WorkflowViewState.IdRef="Click_15" KeyModifiers="None" MouseButton="BTN_LEFT" SimulateClick="False">
+                                        <ui:Click.CursorPosition>
+                                          <ui:CursorPosition Position="Center">
+                                            <ui:CursorPosition.OffsetX>
+                                              <InArgument x:TypeArguments="x:Int32" />
+                                            </ui:CursorPosition.OffsetX>
+                                            <ui:CursorPosition.OffsetY>
+                                              <InArgument x:TypeArguments="x:Int32" />
+                                            </ui:CursorPosition.OffsetY>
+                                          </ui:CursorPosition>
+                                        </ui:Click.CursorPosition>
+                                        <ui:Click.Target>
+                                          <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="1875eee8-4340-48ff-8738-6bbca55b490c" InformativeScreenshot="136a1778abb88d6551f334824e887ffd" Selector="[ButtonOfDogrulaSelector]" WaitForReady="COMPLETE">
+                                            <ui:Target.TimeoutMS>
+                                              <InArgument x:TypeArguments="x:Int32" />
+                                            </ui:Target.TimeoutMS>
+                                          </ui:Target>
+                                        </ui:Click.Target>
+                                      </ui:Click>
+                                      <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="334,91" sap2010:WorkflowViewState.IdRef="LogMessage_53" Level="Info" Message="[&quot;Doğrula butonu elementine tıklandı.&quot;]" />
+                                    </Sequence>
+                                  </If.Then>
+                                  <If.Else>
+                                    <Sequence DisplayName="Image Click" sap:VirtualizedContainerService.HintSize="200,66" sap2010:WorkflowViewState.IdRef="Sequence_63">
+                                      <Sequence.Variables>
+                                        <Variable x:TypeArguments="x:Boolean" Name="IsButtonOfDoğrulaImageExist" />
+                                        <Variable x:TypeArguments="x:String" Name="ImageExistButtonOfDoğrulaSelector" />
+                                      </Sequence.Variables>
+                                      <sap:WorkflowViewStateService.ViewState>
+                                        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                          <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                                          <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                                        </scg:Dictionary>
+                                      </sap:WorkflowViewStateService.ViewState>
+                                      <ui:ImageFound DisplayName="Button Of Doğrula İmage Exists" Found="[IsButtonOfDoğrulaImageExist]" sap:VirtualizedContainerService.HintSize="484,106" sap2010:WorkflowViewState.IdRef="ImageFound_7">
+                                        <ui:ImageFound.Image>
+                                          <ui:ImageTarget Image="{x:Null}" Accuracy="0.8" Profile="Basic" TargetImageBase64="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" />
+                                        </ui:ImageFound.Image>
+                                        <ui:ImageFound.Target>
+                                          <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="790a25d4-101b-4ae9-8530-988c1fd5d600" Selector="[ButtonOfDogrulaSelector]">
+                                            <ui:Target.TimeoutMS>
+                                              <InArgument x:TypeArguments="x:Int32" />
+                                            </ui:Target.TimeoutMS>
+                                            <ui:Target.WaitForReady>
+                                              <InArgument x:TypeArguments="ui:WaitForReady" />
+                                            </ui:Target.WaitForReady>
+                                          </ui:Target>
+                                        </ui:ImageFound.Target>
+                                      </ui:ImageFound>
+                                      <If Condition="[IsButtonOfDoğrulaImageExist]" sap:VirtualizedContainerService.HintSize="484,223" sap2010:WorkflowViewState.IdRef="If_27">
+                                        <sap:WorkflowViewStateService.ViewState>
+                                          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                            <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                                          </scg:Dictionary>
+                                        </sap:WorkflowViewStateService.ViewState>
+                                        <If.Then>
+                                          <Sequence sap:VirtualizedContainerService.HintSize="200,66" sap2010:WorkflowViewState.IdRef="Sequence_61">
+                                            <sap:WorkflowViewStateService.ViewState>
+                                              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                                <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                                                <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                                              </scg:Dictionary>
+                                            </sap:WorkflowViewStateService.ViewState>
+                                            <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="334,91" sap2010:WorkflowViewState.IdRef="LogMessage_71" Level="Info" Message="[&quot;Doğrula buton imgesi ekranda mevcut.&quot;]" />
+                                            <ui:ClickImage ContinueOnError="{x:Null}" DelayBefore="{x:Null}" DelayMS="{x:Null}" SendWindowMessages="{x:Null}" ClickType="CLICK_SINGLE" DisplayName="Click Image 'Button Of Doğrula'" sap:VirtualizedContainerService.HintSize="334,154" sap2010:WorkflowViewState.IdRef="ClickImage_7" KeyModifiers="None" MouseButton="BTN_LEFT">
+                                              <ui:ClickImage.CursorPosition>
+                                                <ui:CursorPosition Position="Center">
+                                                  <ui:CursorPosition.OffsetX>
+                                                    <InArgument x:TypeArguments="x:Int32" />
+                                                  </ui:CursorPosition.OffsetX>
+                                                  <ui:CursorPosition.OffsetY>
+                                                    <InArgument x:TypeArguments="x:Int32" />
+                                                  </ui:CursorPosition.OffsetY>
+                                                </ui:CursorPosition>
+                                              </ui:ClickImage.CursorPosition>
+                                              <ui:ClickImage.Image>
+                                                <ui:ImageTarget Image="{x:Null}" Accuracy="0.8" Profile="Basic" TargetImageBase64="iVBORw0KGgoAAAANSUhEUgAAAFwAAAAcCAYAAADst9g0AAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAfASURBVGhD7Vj7c1xVHb//gfhA8QEVHwUfBUQUBB2FYkEUDUgpryItiDpM9RedsZQ+VIojtmD9RYuilUrBVGiTdtskbUjTNMnmsUl2s2Gz2We6r+zu3cfdx93dJDMfv+ecezf3bhKKnewMM8kPn/ncz/1+zvec/ezZc28i7Q0U8eRYAY8781U84Vw6/fW+LL7Rp3DWsZy1tG9SxSZHDptHc3XhW6wZ3NybWWGNpX20wzfZlbrhaz1pDSnD9fLV0p8o8B+NZPEYhVMPvqk7hRvPySussfSir4BHhzN1w1e7kiswQHrBl8dGWwobh9IEjZdQf+VsAjd0xnED47PxZa+lvd4cHqGAHibUg68/M4UvEzh3arxU2lPCWFbFVqatObTkKnjN8Q7+94CW9ngUPDgo4yFCPfhLHTFcR6gPp/CSPINgUWAoquDOBX3vHZb+OEGBDyTxYH+iLnxtewTXvhVdYY2l5ynwDX1xPEDgTEFdlHbl0BRS8FRN/RqaaM3pMK4hrDkt4x/xMqwpI0ponJCxjtfJx/0xbAuosOZo5xYI+QqstHt/fk6vi34NY3m0Z6eFh4GOFGuygF28vvBcJ4IZNGjj17gLsEayhvWJ/s+Fyzjs1jTzxPP4haFu9ifx55jWP6bg0Xl1s5b+4M7gfgrmfiuBsY7/R7uKGC3NIlGehVfO4WeG+hdPhQTaGKdhyc/CFpKxZYRgT2EP/eHlpOPAGkxUvZtDZUSKZRydSJGHfGMKLFkKlHo/ovezF+AszcAWzeJp5tH7BbL4JZ/PMBev63PNYiKWFusJ0jypnGF9Ai+nZmk9mmaefBG7DHUOXXflYC1VcNTF1lPGy1019Ro/D3x9bwzrrVMXxzSRQwtbgCY31L/Qdh6fb53UOEUhzKA3oGvBt3lVRAoqnuU6jVO0Wzt9EcM44v4cbGoFR0aE3j01g0gyi7Wm/kbW5gqa76+dpABzRWxlOlDigdeO/3vKMC5IHgp8p6FuYi/VlQK2tCVxRKF1exfxaSz93pXCfT3RKn5ouJ7TMg4lVFg8cXOdftLmsGfgiMhzdcLVLUF8rgoZx+mY6A3M3RN1Bb3qNI6Pkh7OY1Qt42Cnsc6QwJv0gXr4WHFtC4Zr+hv9Yi7hN9THiwjkCtjBNA9cMdcJPHBt3NXMo/u1utH/fHwa7qjMr3dEpxGIp031Wr/0HAV+T3cE9xpg1jIa09Mi0NI0urxTou6ksNX5YdeOv+pkAKtP+DlfdUILwa9rAq8n6X4Fxx2kRwtwF4t40VQX/r/RG4k7ktT8rI+5bvbrcxnrIWyPVnjIDzDtpzDl7LzxbB7em2nmyeWx3VCf87M5ptHm0jQdrezLfGbB9Qgt7R6TcQ89jAQorOq1rhUMGoOl8+rsZB72mrDt4aTmN4//rMVXxWpLEsdYCD5d+7Vagu5XcMxB2pHHOH3Abaa6AAtiPJLQ/KzPXJ29HkbUGYRVFS/xe8Ljz6joSQoM0q8iXCjhX0NizGqfirCcqfbQ52O92Bq5Zp5F1rPaRpuONscLurakcYaePW/YzP2qftI88B+cDaGBDvvF+HFPAR5TwEZQ2KHEouM/c9yLTx/zaixC6PbqWucMuul8bh4hbafAWWimOuMgDlAQA/7gBfqo2M91As3kGQjG8JOBGH46mEYHnekdE2y85qdnBwvcPI8X+5PU26dpPXDTPILX0/keVoo44MvigJ9A3EFf6gAddUafkaVnnUl8v/P8BbF5goU+gzi9GRgxEoov6NfxqWaPAXE004K6vcZ7BGcBftope7lOa+HXeJqTaKWfb6tT6P0J2u3heI2HjaXA+fX8uR6i8zicUbBF97PAU1ncp2uOAP9iq+OYR8nhaZNHYG+cfkFpFd30fKuCjt9wMo1bFvAzSL9zJnD3mUnc3Um4AG+id1Jj6CPn4xccd2XTBD551K3xFA/hnEfXbtzcJ6OF3qVZeMLnx56pCvzJDH7cpvt8eFLbaTv1cfR25Ke3h3/2+bVx7H6KAi/ir1zH0aRMo9sj/LzeJqOjUEHLqE/ofoWeQ2U00bNDX8+6IQX2YgmHB7RxniIPfKtW131XNiXRkiujebjm/nAO44UC9szzC5Z+64jjex1BfJfAWMdi+jF3HmOFaQp7asF6rV51ZJzjCs4xHkK4aAAF4IrJeKJV+Dja42iUK7zmp7PdT/OFcyoOD3sN/QLYQe/VvEZ/GPl0H33Yfbwu5jrn0f2Cn5qkXU7HyAauvfh1cK6HPy/W00/H0E2afxUL3LhejiL+Ql+MizbAbs2n9191JMH/p3NyVNfmuvQbexx3tftx11uBuvDlb7pw+RtvXxzTk32jNYQNp9/J50VDNz1neoK4ccH6u2EPGnqoR5fvXfovnqVd9il8p91XN3z8v2P4BGGFBUs7R2K445QPd5724Q4C5yXUHzvsxEcbnYIJy11LO4ajWNfmJXiw7hRjHUujL/vPqAYHLmvUr5evlrYPRfHt1gmCpy78kdcd+PDr9hXWWNpui+D2VjdubyHUgS89NIJLXyOsMGfpGVsYt50cJ7g5r6WgllJ/6NAwPvjqEEHwctfStsEQbj3hwq0WAmMdS6Q/8G8bx/sPCl7uWvpV/yTWUjjfsryNb1rGOOtYCn3JwUFc8gqB+H2vDCxzPYD/ASGVSYfQq1sKAAAAAElFTkSuQmCC" />
+                                              </ui:ClickImage.Image>
+                                              <ui:ClickImage.Target>
+                                                <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="4ae486f5-c780-4463-94b8-70e99b843bc3" Selector="[ButtonOfDogrulaSelector]">
+                                                  <ui:Target.TimeoutMS>
+                                                    <InArgument x:TypeArguments="x:Int32" />
+                                                  </ui:Target.TimeoutMS>
+                                                  <ui:Target.WaitForReady>
+                                                    <InArgument x:TypeArguments="ui:WaitForReady" />
+                                                  </ui:Target.WaitForReady>
+                                                </ui:Target>
+                                              </ui:ClickImage.Target>
+                                              <sap:WorkflowViewStateService.ViewState>
+                                                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                                  <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                                  <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                                                </scg:Dictionary>
+                                              </sap:WorkflowViewStateService.ViewState>
+                                            </ui:ClickImage>
+                                            <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="334,91" sap2010:WorkflowViewState.IdRef="LogMessage_54" Level="Info" Message="[&quot;Doğrula buton imgesine tıklandı.&quot;]" />
+                                          </Sequence>
+                                        </If.Then>
+                                        <If.Else>
+                                          <Sequence sap:VirtualizedContainerService.HintSize="200,66" sap2010:WorkflowViewState.IdRef="Sequence_62">
+                                            <sap:WorkflowViewStateService.ViewState>
+                                              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                                <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                                                <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                                              </scg:Dictionary>
+                                            </sap:WorkflowViewStateService.ViewState>
+                                            <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="334,91" sap2010:WorkflowViewState.IdRef="LogMessage_55" Level="Info" Message="[&quot;Doğrula butonu görülmedi.&quot;]" />
+                                            <Throw Exception="[new Exception(&quot;Doğrula butonu mevcut değil.&quot;)]" sap:VirtualizedContainerService.HintSize="334,22" sap2010:WorkflowViewState.IdRef="Throw_12" />
+                                          </Sequence>
+                                        </If.Else>
+                                      </If>
+                                    </Sequence>
+                                  </If.Else>
+                                </If>
+                              </Sequence>
+                              <ui:UiElementExists DisplayName="Button Of TAMAM Exist" Exists="[IsDoğrulamaEkranıExist]" sap:VirtualizedContainerService.HintSize="484,106" sap2010:WorkflowViewState.IdRef="UiElementExists_12">
+                                <ui:UiElementExists.Target>
+                                  <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="aaf53641-bc10-4e83-8b8c-844aef3bd1b9" InformativeScreenshot="d373b2bd1901647b2bb73fc2bb99a497" Selector="[ButtonOfTamamSelector]" TimeoutMS="4000" WaitForReady="COMPLETE" />
+                                </ui:UiElementExists.Target>
+                              </ui:UiElementExists>
+                              <If Condition="[IsDoğrulamaEkranıExist]" DisplayName="If- Doğrulama Ekranı Gelmediyse:" sap:VirtualizedContainerService.HintSize="484,223" sap2010:WorkflowViewState.IdRef="If_24">
+                                <sap:WorkflowViewStateService.ViewState>
+                                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                    <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                    <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                                  </scg:Dictionary>
+                                </sap:WorkflowViewStateService.ViewState>
+                                <If.Then>
+                                  <Sequence DisplayName="Hata/Uyarı Mesajı Geldiyse:" sap:VirtualizedContainerService.HintSize="200,66" sap2010:WorkflowViewState.IdRef="Sequence_56">
+                                    <Sequence.Variables>
+                                      <Variable x:TypeArguments="x:Boolean" Name="IsImageTamamExist" />
+                                      <Variable x:TypeArguments="x:Boolean" Name="IsHataMesajıExist" />
+                                    </Sequence.Variables>
+                                    <sap:WorkflowViewStateService.ViewState>
+                                      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                        <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                                        <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                                      </scg:Dictionary>
+                                    </sap:WorkflowViewStateService.ViewState>
+                                    <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="334,91" sap2010:WorkflowViewState.IdRef="LogMessage_72" Level="Info" Message="[&quot;Ekranda Hata/Uyarı mesajı görüldü.&quot;]" />
+                                    <ui:Click AlterIfDisabled="{x:Null}" DelayBefore="{x:Null}" DelayMS="{x:Null}" SendWindowMessages="{x:Null}" ClickType="CLICK_SINGLE" CursorMotionType="Smooth" DisplayName="Click 'INPUT'" sap:VirtualizedContainerService.HintSize="334,106" sap2010:WorkflowViewState.IdRef="Click_14" KeyModifiers="None" MouseButton="BTN_LEFT" SimulateClick="False">
+                                      <ui:Click.CursorPosition>
+                                        <ui:CursorPosition Position="Center">
+                                          <ui:CursorPosition.OffsetX>
+                                            <InArgument x:TypeArguments="x:Int32" />
+                                          </ui:CursorPosition.OffsetX>
+                                          <ui:CursorPosition.OffsetY>
+                                            <InArgument x:TypeArguments="x:Int32" />
+                                          </ui:CursorPosition.OffsetY>
+                                        </ui:CursorPosition>
+                                      </ui:Click.CursorPosition>
+                                      <ui:Click.Target>
+                                        <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="dad0e814-f230-4eff-b56a-a0c5b50ebcc4" InformativeScreenshot="926dd9eee7f691c3067ad8c03ac5fafd" Selector="[ButtonOfTamamSelector]" TimeoutMS="4000">
+                                          <ui:Target.WaitForReady>
+                                            <InArgument x:TypeArguments="ui:WaitForReady" />
+                                          </ui:Target.WaitForReady>
+                                        </ui:Target>
+                                      </ui:Click.Target>
+                                    </ui:Click>
+                                    <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="334,91" sap2010:WorkflowViewState.IdRef="LogMessage_50" Level="Info" Message="[&quot;Hata/Uyarı mesajı ignore edildi.&quot;]" />
+                                    <Delay Duration="00:00:01" sap:VirtualizedContainerService.HintSize="334,22" sap2010:WorkflowViewState.IdRef="Delay_8" />
+                                  </Sequence>
+                                </If.Then>
+                                <If.Else>
+                                  <Sequence DisplayName="Doğru Ekran Geldiyse:" sap:VirtualizedContainerService.HintSize="200,66" sap2010:WorkflowViewState.IdRef="Sequence_57">
+                                    <sap:WorkflowViewStateService.ViewState>
+                                      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                        <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                                        <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                                      </scg:Dictionary>
+                                    </sap:WorkflowViewStateService.ViewState>
+                                    <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="334,91" sap2010:WorkflowViewState.IdRef="LogMessage_51" Level="Info" Message="[&quot;Doğrulama ekranı görüldü. Get Text işlemi başlıyor.&quot;]" />
+                                    <ui:Break sap:VirtualizedContainerService.HintSize="334,22" sap2010:WorkflowViewState.IdRef="Break_4" />
+                                  </Sequence>
+                                </If.Else>
+                              </If>
+                              <If Condition="[sayac = ListOfILce.Count-1]" sap:VirtualizedContainerService.HintSize="484,236" sap2010:WorkflowViewState.IdRef="If_25">
+                                <sap:WorkflowViewStateService.ViewState>
+                                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                    <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                    <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                                  </scg:Dictionary>
+                                </sap:WorkflowViewStateService.ViewState>
+                                <If.Then>
+                                  <Throw Exception="[new Exception(&quot;İstenen illdeki her vergi dairesi denenerek sonuç bulunamadı.&quot;)]" sap:VirtualizedContainerService.HintSize="200,22" sap2010:WorkflowViewState.IdRef="Throw_10" />
+                                </If.Then>
+                              </If>
+                            </Sequence>
+                          </ActivityAction>
+                        </ui:ForEach.Body>
+                        <sap:WorkflowViewStateService.ViewState>
+                          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                            <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                            <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                          </scg:Dictionary>
+                        </sap:WorkflowViewStateService.ViewState>
+                      </ui:ForEach>
+                    </If.Else>
+                  </If>
+                </Sequence>
+                <Sequence DisplayName="After  Perform Sequence" sap:VirtualizedContainerService.HintSize="334,66" sap2010:WorkflowViewState.IdRef="Sequence_72">
+                  <sap:WorkflowViewStateService.ViewState>
+                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                      <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                      <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                    </scg:Dictionary>
+                  </sap:WorkflowViewStateService.ViewState>
+                </Sequence>
+                <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="334,91" sap2010:WorkflowViewState.IdRef="LogMessage_60" Level="Info" Message="[&quot;Vergi dairesinin arandığı süreç sonlandı.&quot;]" />
+              </Sequence>
+            </Sequence>
+          </ActivityAction>
+        </ui:BrowserScope.Body>
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+            <x:Boolean x:Key="IsPinned">False</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </ui:BrowserScope>
+    </Sequence>
+    <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="602,91" sap2010:WorkflowViewState.IdRef="LogMessage_61" Level="Info" Message="[&quot;State : -&gt; Search VKN TCKN workflow sonlandı.&quot;]" />
+  </Sequence>
+</Activity>
